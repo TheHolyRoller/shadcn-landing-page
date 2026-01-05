@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useMotionValue, useTransform } from 'motion/react';
-// replace icons with your own if needed
 import { FiCircle, FiCode, FiFileText, FiLayers, FiLayout } from 'react-icons/fi';
 
 
@@ -57,7 +56,7 @@ function CarouselItem({ item, index, itemWidth, round, trackItemOffset, x, trans
       } overflow-hidden cursor-grab active:cursor-grabbing`}
       style={{
         width: itemWidth,
-        height: round ? itemWidth : '100%',
+        height: round ? itemWidth : itemWidth * 1.4,
         rotateY: rotateY,
         ...(round && { borderRadius: '50%' })
       }}
@@ -76,7 +75,7 @@ function CarouselItem({ item, index, itemWidth, round, trackItemOffset, x, trans
   );
 }
 
-export default function Carousel({
+function Carousel({
   items = DEFAULT_ITEMS,
   baseWidth = 300,
   autoplay = false,
@@ -211,12 +210,13 @@ export default function Carousel({
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-hidden p-4 ${
+      className={`relative overflow-hidden px-4 pt-2 pb-1 md:pt-4 md:pb-2 ${
         round ? 'rounded-full border border-white' : 'rounded-[24px] border border-[#222]'
       }`}
       style={{
-        width: `${baseWidth}px`,
-        ...(round && { height: `${baseWidth}px` })
+        width: `min(${baseWidth}px, 100%)`,
+        maxWidth: '100%',
+        height: round ? `min(${baseWidth}px, 100%)` : `min(${baseWidth * 0.6}px, calc(100vw * 0.6))`
       }}
     >
       <motion.div
@@ -272,6 +272,20 @@ export default function Carousel({
           ))}
         </div>
       </div>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="min-h-screen w-full flex items-center justify-center bg-black px-4">
+      <Carousel 
+        baseWidth={1200}
+        autoplay={true}
+        autoplayDelay={3000}
+        pauseOnHover={true}
+        loop={true}
+      />
     </div>
   );
 }

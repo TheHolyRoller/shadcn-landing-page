@@ -1,19 +1,29 @@
+'use client'
 import { About } from "./components/About";
 import { Features } from "./components/Features";
 import  HeroTemplate from './components/HeroTemplate'; 
 
 import { HowItWorks } from "./components/HowItWorks";
-import { ScrollToTop } from "./components/ScrollToTop";
+// import { ScrollToTop } from "./components/ScrollToTop";
 import { Team } from "./components/Team";
 import { Testimonials } from "./components/Testimonials";
 import "./App.css";
 import ContactForm from "./components/ContactForm";
 import Footer  from "./components/Footer";
+// import MobileNavbar from './components/MobileNavbar'; 
+import Carousel from './components/Carousel'; 
+
+
 
 function App() {
   return (
     <>
       {/* <Navbar /> */}
+
+      {/* TODO add in a media query here  */}
+      {/* <MobileNavbar/> */}
+
+
       {/* <Hero /> */}
       <HeroTemplate/>
 
@@ -22,6 +32,8 @@ function App() {
       <HowItWorks />
       <Features />
       <ContactForm/> 
+
+      <Carousel/>
       
       {/* <Services /> */}
       {/* <Cta /> */}
@@ -31,7 +43,7 @@ function App() {
       {/* <Newsletter /> */}
       {/* <FAQ /> */}
       {/* <Footer /> */}
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
 
       <Footer/> 
 

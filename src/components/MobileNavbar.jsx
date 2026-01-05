@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/navbar-menu";
+import { HoveredLink, Menu, MenuItem, ProductItem } from "../components/ui/navbar-menu";
 import { cn } from "@/lib/utils";
 
-export function NavbarDemo() {
+export default  function MobileNavbar() {
   return (
     <div className="relative w-full flex items-center justify-center">
-      <MobileNavbar className="top-2" />
+      <Navbar className="top-2" />
       {/* <p className="text-black dark:text-white">
         The Navbar will show on top of the page
       </p> */}
@@ -15,7 +15,8 @@ export function NavbarDemo() {
 }
 
 
-function MobileNavbar({
+
+function Navbar({
   className
 }) {
   const [active, setActive] = useState(null);
